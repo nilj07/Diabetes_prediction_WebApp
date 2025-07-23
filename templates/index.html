@@ -7,29 +7,71 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Welcome to the Diabetes Prediction App!</h1>
-    <form id="predictionForm" onsubmit="return false;">
-        <label>Pregnancies</label>
-        <input type="number" id="pregnancies" placeholder="Pregnancies" required>
-        <label>Glucose</label>
-        <input type="number" id="glucose" placeholder="Glucose" required>
-        <label>Blood Pressure</label>
-        <input type="number" id="blood_pressure" placeholder="Blood Pressure" required>
-        <label>Skin Thickness</label>
-        <input type="number" id="skin_thickness" placeholder="Skin Thickness" required>
-        <label>Insulin</label>
-        <input type="number" id="insulin" placeholder="Insulin" required>
-        <label>BMI</label>
-        <input type="number" id="bmi" placeholder="BMI" required>
-        <label>Diabetes Pedigree Function</label>
-        <input type="number" id="diabetes_pedigree_function" placeholder="Diabetes Pedigree Function" required>
-        <label>Age</label>
-        <input type="number" id="age" placeholder="Age" required>
-         <button id="predictBtn">Predict</button>
-        <div id="loading" class="loading-indicator" style="display:none;">Predicting...</div>
-    </form>
-    <div id="result"></div>
-    <div id="error" class="error-message"></div>
+   <div class="container">
+        <header>
+            <h1>Diabetes Risk Assessment</h1>
+            <p class="subtitle">Evaluate your diabetes risk based on key health indicators</p>
+        </header>
+
+        <div class="predictor-card">
+            <form id="predictionForm" onsubmit="return false;">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="glucose">Glucose Level (mg/dL)</label>
+                        <input type="number" id="glucose" placeholder="Enter glucose level" min="20" max="400" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="blood-pressure">Blood Pressure (mm Hg)</label>
+                        <input type="number" id="blood_pressure" placeholder="Enter systolic pressure" min="60" max="250" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="skin_thickness">Skin Thickness (mm)</label>
+                        <input type="number" id="skin_thickness" placeholder="Triceps skin fold thickness" min="0" max="99" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="insulin">Insulin Level (μU/mL)</label>
+                        <input type="number" id="insulin" placeholder="Enter insulin level" min="0" max="846" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="diabetes_pedigree_function">Body Mass Index (BMI)</label>
+                        <input type="number" id="diabetes_pedigree_function" placeholder="diabetes_pedigree_function" step="0.1" min="10" max="60" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="bmi">Body Mass Index (BMI)</label>
+                        <input type="number" id="bmi" placeholder="Enter BMI value" step="0.1" min="10" max="60" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="age">Age (years)</label>
+                        <input type="number" id="age" placeholder="Enter age" min="1" max="120" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="pregnancies">Pregnancies (for women)</label>
+                        <input type="number" id="pregnancies" placeholder="Number of pregnancies" min="0" max="20">
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button type="submit" id="predictBtn" class="predict-button">Predict Diabetes Risk</button>
+                </div>
+            </form>
+
+            <div id="resultContainer" class="result-container visually-hidden">
+                <h2 class="result-title">Prediction Result</h2>
+                <p id="result"></p>
+            </div>
+        </div>
+
+        <footer>
+            <p>This assessment is for informational purposes only. Consult with a healthcare professional for medical advice.</p>
+        </footer>
+    </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
