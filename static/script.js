@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
             skin_thickness: document.getElementById('skin_thickness').value,
             insulin: document.getElementById('insulin').value,
             bmi: document.getElementById('bmi').value,
-            diabetes_pedigree_function: document.getElementById('diabetes_pedigree_function').value,
             age: document.getElementById('age').value
         };
 
@@ -27,11 +26,22 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(data => {
+            const resultContainer = document.getElementById('resultContainer');
+            const resultText = document.getElementById('result');
+            resultContainer.classList.remove('positive', 'negative', 'visually-hidden');
+
             if (data.error) {
-                document.getElementById('result').innerText = 'Error: ' + data.error;
+                resultText.innerText = 'Error: ' + data.error;
             } else {
-                document.getElementById('result').innerText = data.prediction;
+                resultText.innerText = data.prediction;
+                if (data.prediction === 'POSITIVE') {
+                    resultContainer.classList.add('positive');
+                } else {
+                    resultContainer.classList.add('negative');
+                }
             }
+            resultContainer.style.display = 'block'; // Show the result container
+            resultContainer.scrollIntoView({ behavior: 'smooth' });
         })
         .catch(error => {
             document.getElementById('result').innerText = 'An error occurred. Please try again.';
@@ -39,6 +49,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-// new 
-
