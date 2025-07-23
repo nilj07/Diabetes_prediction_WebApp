@@ -17,6 +17,10 @@
             <form id="predictionForm">
                 <div class="form-grid">
                     <div class="input-group">
+                        <label for="pregnancies">Pregnancies (for women)</label>
+                        <input type="number" id="pregnancies" placeholder="Number of pregnancies" min="0" max="20">
+                    </div>
+                    <div class="input-group">
                         <label for="glucose">Glucose Level (mg/dL)</label>
                         <input type="number" id="glucose" placeholder="Enter glucose level" min="20" max="400" required>
                     </div>
@@ -40,16 +44,15 @@
                         <label for="bmi">Body Mass Index (BMI)</label>
                         <input type="number" id="bmi" placeholder="Enter BMI value" step="0.1" min="10" max="60" required>
                     </div>
-
+                    <div class="input-group">
+                        <label for="bmi">diabetes_pedigree_function</label>
+                        <input type="number" id="diabetes_pedigree_function" placeholder="diabetes_pedigree_function" step="0.1" min="10" max="60" required>
+                    </div>
                     <div class="input-group">
                         <label for="age">Age (years)</label>
                         <input type="number" id="age" placeholder="Enter age" min="1" max="120" required>
                     </div>
 
-                    <div class="input-group">
-                        <label for="pregnancies">Pregnancies (for women)</label>
-                        <input type="number" id="pregnancies" placeholder="Number of pregnancies" min="0" max="20">
-                    </div>
                 </div>
 
                 <div class="button-container">
