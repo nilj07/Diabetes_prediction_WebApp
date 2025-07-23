@@ -39,3 +39,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// new 
+document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate prediction (would be replaced with actual API call in production)
+            const randomPrediction = Math.random() > 0.5;
+            const resultContainer = document.getElementById('resultContainer');
+            const resultText = document.getElementById('result');
+            
+            resultContainer.classList.remove('positive', 'negative', 'visually-hidden');
+            
+            if (randomPrediction) {
+                resultContainer.classList.add('positive');
+                resultText.textContent = 'POSITIVE: The assessment indicates a high likelihood of diabetes based on the inputs provided. Please consult with a healthcare professional for further evaluation.';
+            } else {
+                resultContainer.classList.add('negative');
+                resultText.textContent = 'NEGATIVE: The assessment indicates a low likelihood of diabetes based on the provided inputs. Maintain regular checkups for continued health monitoring.';
+            }
+            
+            setTimeout(() => {
+                resultContainer.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        });
