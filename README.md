@@ -12,7 +12,7 @@ An interactive web application that predicts whether a person is likely to have 
 
 ## 🚀 Live Demo
 
-[🔗 Add Live Demo Link Here (optional if hosted)](https://your-app-url.com)
+[🔗Live Demo Link Here](https://diabetes-prediction-webapp-b7il.onrender.com/)
 
 ## 📸 Screenshots
 
