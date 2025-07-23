@@ -22,7 +22,7 @@ def predict():
     if model is None:
         return jsonify({'error': 'The model failed to load.'}), 500
     try:
-        data = request.get_json()
+        data = request.form
         print("Received data:", data)
 
         # Convert input data to the correct types
