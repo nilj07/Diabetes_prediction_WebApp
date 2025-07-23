@@ -17,7 +17,7 @@ An interactive web application that predicts whether a person is likely to have 
 ## 📸 Screenshots
 
 ![Home Page](screenshot-1.png)
-![Prediction Result](assets/result_screenshot.png)
+![Prediction Result](screenshot-2.png)
 
 ## 📁 Project Structure
 
