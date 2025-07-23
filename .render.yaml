@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: diabetes-predictor
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
