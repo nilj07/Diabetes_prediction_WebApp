@@ -9,13 +9,21 @@
 <body>
     <h1>Welcome to the Diabetes Prediction App!</h1>
     <form id="predictionForm" onsubmit="return false;">
+        <label>Pregnancies</label>
         <input type="number" id="pregnancies" placeholder="Pregnancies" required>
+        <label>Glucose</label>
         <input type="number" id="glucose" placeholder="Glucose" required>
+        <label>Blood Pressure</label>
         <input type="number" id="blood_pressure" placeholder="Blood Pressure" required>
+        <label>Skin Thickness</label>
         <input type="number" id="skin_thickness" placeholder="Skin Thickness" required>
+        <label>Insulin</label>
         <input type="number" id="insulin" placeholder="Insulin" required>
+        <label>BMI</label>
         <input type="number" id="bmi" placeholder="BMI" required>
+        <label>Diabetes Pedigree Function</label>
         <input type="number" id="diabetes_pedigree_function" placeholder="Diabetes Pedigree Function" required>
+        <label>Age</label>
         <input type="number" id="age" placeholder="Age" required>
          <button id="predictBtn">Predict</button>
         <div id="loading" class="loading-indicator" style="display:none;">Predicting...</div>
