@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Welcome to the Diabetes Prediction App!</h1>
+    <form id="predictionForm" onsubmit="return false;">
+        <input type="number" id="pregnancies" placeholder="Pregnancies" required>
+        <input type="number" id="glucose" placeholder="Glucose" required>
+        <input type="number" id="blood_pressure" placeholder="Blood Pressure" required>
+        <input type="number" id="skin_thickness" placeholder="Skin Thickness" required>
+        <input type="number" id="insulin" placeholder="Insulin" required>
+        <input type="number" id="bmi" placeholder="BMI" required>
+        <input type="number" id="diabetes_pedigree_function" placeholder="Diabetes Pedigree Function" required>
+        <input type="number" id="age" placeholder="Age" required>
+         <button id="predictBtn">Predict</button>
+        <div id="loading" class="loading-indicator" style="display:none;">Predicting...</div>
+    </form>
+    <div id="result"></div>
+    <div id="error" class="error-message"></div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
