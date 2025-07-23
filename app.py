@@ -1,17 +1,12 @@
-from flask import Flask, render_template, request, jsonify
-import pickle
+from flask import Flask, render_template, request
+import joblib
 import numpy as np
+import os
 
 app = Flask(__name__)
 
-# Load the trained KNN model globally, only once
-try:
-    with open('diabetes_knn_model.pkl', 'rb') as file:
-        model = pickle.load(file)
-        print("Model loaded successfully:", type(model))  # Debugging line
-except Exception as e:
-    print(f"Error loading model: {e}")
-    model = None
+# Load your trained model
+model = joblib.load('model.pkl')
 
 @app.route('/')
 def home():
@@ -19,37 +14,27 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    if model is None:
-        return jsonify({'error': 'The model failed to load.'}), 500
-    try:
-        data = request.get_json()
-        print("Received data:", data)
+    if request.method == 'POST':
+        pregnancies = int(request.form['pregnancies'])
+        glucose = int(request.form['glucose'])
+        bloodpressure = int(request.form['bloodpressure'])
+        skinthickness = int(request.form['skinthickness'])
+        insulin = int(request.form['insulin'])
+        bmi = float(request.form['bmi'])
+        dpf = float(request.form['dpf'])
+        age = int(request.form['age'])
 
-        # Convert input data to the correct types
-        features = np.array([
-            int(data['pregnancies']),
-            float(data['glucose']),
-            float(data['blood_pressure']),
-            float(data['skin_thickness']),
-            float(data['insulin']),
-            float(data['bmi']),
-            float(data['diabetes_pedigree_function']),
-            int(data['age'])
-        ]).reshape(1, -1)
+        data = np.array([[pregnancies, glucose, bloodpressure, skinthickness, insulin, bmi, dpf, age]])
+        prediction = model.predict(data)
 
-        # Predict
-        prediction = model.predict(features)
-        prediction_text = 'Likely Diabetic' if prediction[0] == 1 else 'Likely Not Diabetic'
+        if prediction[0] == 1:
+            result = 'Diabetic'
+        else:
+            result = 'Not Diabetic'
 
-        return jsonify({
-            'prediction': prediction_text,
-            'prediction_text': prediction_text
-        })
-    except Exception as e:
-        print("Error:", str(e))
-        return jsonify({'error': str(e)}), 500
+        return render_template('index.html', prediction_text=f'Result: {result}')
 
+# REQUIRED FOR RENDER DEPLOYMENT
 if __name__ == '__main__':
-    import os
     port = int(os.environ.get("PORT", 10000))
     app.run(host='0.0.0.0', port=port)
