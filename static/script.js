@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
             glucose: document.getElementById('glucose').value,
             blood_pressure: document.getElementById('blood_pressure').value,
             skin_thickness: document.getElementById('skin_thickness').value,
+            diabetes_pedigree_function: document.getElementById('diabetes_pedigree_function').value,
             insulin: document.getElementById('insulin').value,
             bmi: document.getElementById('bmi').value,
             age: document.getElementById('age').value
